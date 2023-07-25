@@ -10,6 +10,7 @@ import ProductItemGrid from "../components/StoryBlokComponents/ProductItemGrid";
 import TwoGrid from "../components/StoryBlokComponents/TwoGrid";
 import Layout from "../components/Layout/Layout";
 import ProductsGrid from "../components/StoryBlokComponents/ProductsGrid";
+import CartProvider from "../components/Cart/CartContext";
 
 const components = {
   productsGrid: ProductsGrid,
@@ -29,11 +30,12 @@ storyblokInit({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
-
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <CartProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </CartProvider>
   )
 }
 

@@ -2,7 +2,6 @@ import { useStoryblokState, storyblokEditable, StoryblokComponent } from "@story
 import ProductList from "../ProductList/ProductList";
 
 const ProductsGrid = ({ blok }: any) => {
-  console.log('PRODUCTS LIST:', blok);
   return (
     <div className="" {...storyblokEditable(blok)}>
       <ProductList />
