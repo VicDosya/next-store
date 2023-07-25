@@ -2,14 +2,20 @@ import { storyblokInit, apiPlugin } from "@storyblok/react";
 import "../app/globals.css";
 import { AppProps } from "next/app";
 import Page from '../components/Page';
-import Feature from "../components/Feature";
-import Grid from "../components/Grid";
-import Teaser from "../components/Teaser";
+import ImageAndText from "../components/ImageAndText";
+import FourGrid from "../components/FourGrid";
+import Title from "../components/Title";
+import Description from "../components/Description";
+import ProductItemGrid from "../components/ProductItemGrid";
+import TwoGrid from "../components/TwoGrid";
 
 const components = {
-  feature: Feature,
-  grid: Grid,
-  teaser: Teaser,
+  imageAndText: ImageAndText,
+  productItemGrid: ProductItemGrid,
+  fourGrid: FourGrid,
+  twoGrid: TwoGrid,
+  title: Title,
+  description: Description,
   page: Page,
 };
 //Initialize connection with Storyblok(Visual Editor) and provide API client.

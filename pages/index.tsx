@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from "next/head";
+import Layout from "../components/Layout/Layout";
 import { useStoryblokState, StoryblokComponent, getStoryblokApi } from "@storyblok/react";
 
 export default function Home({ story }: any) {
@@ -19,8 +20,9 @@ export default function Home({ story }: any) {
           {story ? story.name : "My Site"}
         </h1>
       </header>
-      <StoryblokComponent blok={story.content} />
-
+      <Layout>
+        <StoryblokComponent blok={story.content} />
+      </Layout>
     </div>
   )
 }

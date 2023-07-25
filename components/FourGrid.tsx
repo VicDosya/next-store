@@ -1,8 +1,8 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 
-const Grid = ({ blok }: any) => {
+const FourGrid = ({ blok }: any) => {
   return (
-    <div className="grid grid-cols-3" {...storyblokEditable(blok)}>
+    <div className="grid grid-cols-4" {...storyblokEditable(blok)}>
       {blok.columns.map((nestedBlok: any) => (
         <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
       ))}
@@ -10,4 +10,4 @@ const Grid = ({ blok }: any) => {
   );
 };
 
-export default Grid;
+export default FourGrid;
