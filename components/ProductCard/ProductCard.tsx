@@ -5,7 +5,7 @@ import potato from "../../public/potato.png";
 
 function ProductCard() {
   return (
-    <div className='flex justify-center'>
+    <div className='cursor-pointer flex justify-center shadow py-5 mx-5 bg-slate-100 hover:shadow-md'>
       <Link href={`products/INSERTHERE`}>
         <div className="">
           <Image
