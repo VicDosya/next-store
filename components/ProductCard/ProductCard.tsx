@@ -16,8 +16,8 @@ function ProductCard({ item }: any) {
           />
         </div>
         <div className='flex items-center flex-col'>
-          <h3 className="">{product.handle}</h3>
-          <p className="">{product.priceRange.minVariantPrice.amount}$</p>
+          <h3 className="text-lg">{product.title}</h3>
+          <p className="font-bold">{product.priceRange.minVariantPrice.amount}$</p>
         </div>
       </Link>
     </div>

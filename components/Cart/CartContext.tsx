@@ -14,6 +14,7 @@ function CartProvider({ children }: any) {
     return null;
   });
   const [cartItems, setCartItems] = useState([]);
+  const [cartLength, setCartLength] = useState(0);
 
   useEffect(() => {
     if (cartId) {
@@ -49,6 +50,7 @@ function CartProvider({ children }: any) {
           cartId: cartId,
         };
         const cartDetails = await storefront(getCartDetailsQuery, variables);
+
         return cartDetails.data.cart;
       }
       return null;
@@ -59,7 +61,8 @@ function CartProvider({ children }: any) {
 
   useEffect(() => {
     setCartItems(cartDetails);
-  }, [cartDetails])
+    setCartLength(cartDetails.totalQuantity);
+  }, [cartDetails]);
 
   return <CartContext.Provider value={{
     cartId,
@@ -67,7 +70,8 @@ function CartProvider({ children }: any) {
     cartItems,
     setCartItems,
     isOpen,
-    setIsOpen
+    setIsOpen,
+    cartLength,
   }}>{children}</CartContext.Provider>;
 }
 

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Cart from "../Cart/Cart";
 import { CartContext } from "../Cart/CartContext";
 const Navigation = () => {
-  const { isOpen, setIsOpen }: any = useContext(CartContext);
+  const { isOpen, setIsOpen, cartLength }: any = useContext(CartContext);
 
   return (
     <div className="relative bg-white border-b-2 border-gray-100">
@@ -27,7 +27,7 @@ const Navigation = () => {
           </div>
           <div className="hidden cursor-pointer md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
             <p className="text-base font-medium text-gray-500 hover:text-gray-900" onClick={() => setIsOpen(!isOpen)}>
-              My Cart 🛒
+              My Cart ({cartLength}) 🛒
             </p>
           </div>
         </div>

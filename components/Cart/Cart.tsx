@@ -6,7 +6,7 @@ import { storefront } from '../../utils/shopify';
 import { removeCartItemLine } from './queries';
 
 function Cart() {
-  const { setIsOpen, isOpen, cartItems, setCartItems, cartId }: any = useContext(CartContext);
+  const { setIsOpen, isOpen, cartItems, cartId }: any = useContext(CartContext);
   console.log(cartItems);
   const handleDeleteCartItem = async (itemLineId: any) => {
     try {

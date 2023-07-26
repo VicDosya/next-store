@@ -53,6 +53,7 @@ export const getCartDetailsQuery = gql`
         totalAmountEstimated
       }
       checkoutUrl
+      totalQuantity
     }
   }
 `;
