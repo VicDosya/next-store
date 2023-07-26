@@ -26,7 +26,7 @@ const Navigation = () => {
           </div>
           <div className="hidden cursor-pointer md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
             <p className="text-base font-medium text-gray-500 hover:text-gray-900" onClick={() => setIsOpen(!isOpen)}>
-              My Cart ({cartLength}) 🛒
+              My Cart ({cartLength ? cartLength : '0'}) 🛒
             </p>
           </div>
         </div>
