@@ -12,6 +12,7 @@ import Layout from "../components/Layout/Layout";
 import ProductsGrid from "../components/StoryBlokComponents/ProductsGrid";
 import CartProvider from "../components/Cart/CartContext";
 
+//Storyblok components ready to use:
 const components = {
   productsGrid: ProductsGrid,
   imageAndText: ImageAndText,

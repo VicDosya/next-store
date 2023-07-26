@@ -1,4 +1,4 @@
-import { useStoryblokState, storyblokEditable, StoryblokComponent } from "@storyblok/react";
+import { storyblokEditable } from "@storyblok/react";
 import ProductList from "../ProductList/ProductList";
 
 const ProductsGrid = ({ blok }: any) => {

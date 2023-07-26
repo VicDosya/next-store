@@ -4,9 +4,7 @@ import { storefront } from '../../utils/shopify';
 import { singleProductHandleQuery, singleProductQuery } from './queries';
 
 export default function Product({ product, products }: any) {
-
   const relatedProducts = products.edges.filter((item: any) => item.node.handle !== product.handle).slice(0, 4);
-
   return (
     <ProductDetails product={product} relatedProducts={relatedProducts} />
   )
