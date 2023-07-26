@@ -10,6 +10,8 @@
     "proxy": "mkcert -install && mkcert localhost && local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.15",
+    "@heroicons/react": "^2.0.18",
     "@storyblok/react": "^2.2.0",
     "@types/node": "20.4.4",
     "@types/react": "18.2.16",

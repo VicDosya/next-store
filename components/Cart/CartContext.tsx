@@ -49,7 +49,7 @@ function CartProvider({ children }: any) {
           cartId: cartId,
         };
         const cartDetails = await storefront(getCartDetailsQuery, variables);
-        return cartDetails.data.cart.lines.edges;
+        return cartDetails.data.cart;
       }
       return null;
     } catch (error: any) {

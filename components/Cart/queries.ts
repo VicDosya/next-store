@@ -6,7 +6,6 @@ export const getCartDetailsQuery = gql`
       id
       createdAt
       updatedAt
-
       lines(first: 10) {
         edges {
           node {
@@ -21,15 +20,23 @@ export const getCartDetailsQuery = gql`
                   handle
                 }
                 quantityAvailable
+                image {
+                  transformedSrc
+                }
+                priceV2 {
+                  amount
+                }
               }
             }
           }
         }
       }
-      estimatedCost {
+      cost {
         totalAmount {
           amount
+          currencyCode
         }
+        totalAmountEstimated
       }
     }
   }
