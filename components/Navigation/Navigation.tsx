@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Link from "next/link";
-import Cart from "../Cart/Cart";
 import { CartContext } from "../Cart/CartContext";
 const Navigation = () => {
   const { isOpen, setIsOpen, cartLength }: any = useContext(CartContext);

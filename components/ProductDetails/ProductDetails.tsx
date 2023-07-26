@@ -7,7 +7,7 @@ import { storefront } from '../../utils/shopify';
 
 function ProductDetails({ product, relatedProducts }: any) {
   const [selectedVariantId, setSelectedVariantId] = useState(product.variants.edges[0].node.id);
-  const { cartId, setCartId, cartItems, setCartItems }: any = useContext(CartContext);
+  const { cartId, setCartId }: any = useContext(CartContext);
 
   //Select the first variant option
   useEffect(() => {
@@ -28,9 +28,8 @@ function ProductDetails({ product, relatedProducts }: any) {
             }
           ]
         };
-        const cart = await storefront(updateCartMutation, variables);
+        await storefront(updateCartMutation, variables);
       }
-      // await fetchCartDetails(cartId);
     } catch (error: any) {
       console.error("Error with Cart:", error);
     }

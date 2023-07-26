@@ -7,19 +7,18 @@ import { removeCartItemLine } from './queries';
 
 function Cart() {
   const { setIsOpen, isOpen, cartItems, cartId }: any = useContext(CartContext);
-  console.log(cartItems);
   const handleDeleteCartItem = async (itemLineId: any) => {
     try {
       const variables = {
         cartId: cartId,
         lineIds: [itemLineId]
       }
-      const response = await storefront(removeCartItemLine, variables);
-      console.log("CART REMOVED", response);
+      await storefront(removeCartItemLine, variables);
     } catch (error: any) {
       console.log(error);
     }
   };
+
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setIsOpen}>

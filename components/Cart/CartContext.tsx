@@ -28,20 +28,13 @@ function CartProvider({ children }: any) {
     }
   }, [cartId]);
 
-  const { data: cartDetails, isLoading, error: cartError }: any = useSWR(
+  const { data: cartDetails }: any = useSWR(
     cartId ? ['getCartDetails', cartId] : null,
     () => fetchCartDetails(cartId),
     {
       refreshInterval: 1000,
     }
   );
-
-  if (cartError) {
-    <div>Something went wrong with the cart..</div>
-  }
-  if (isLoading) {
-    <div>Loading ...</div>
-  }
 
   const fetchCartDetails = async (cartId: any) => {
     try {
@@ -50,7 +43,6 @@ function CartProvider({ children }: any) {
           cartId: cartId,
         };
         const cartDetails = await storefront(getCartDetailsQuery, variables);
-
         return cartDetails.data.cart;
       }
       return null;
@@ -61,7 +53,7 @@ function CartProvider({ children }: any) {
 
   useEffect(() => {
     setCartItems(cartDetails);
-    setCartLength(cartDetails.totalQuantity);
+    setCartLength(cartDetails?.totalQuantity);
   }, [cartDetails]);
 
   return <CartContext.Provider value={{
