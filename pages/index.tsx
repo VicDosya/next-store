@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStoryblokState, StoryblokComponent, getStoryblokApi } from "@storyblok/react";
 import { storefront } from '../utils/shopify';
-import { productsQuery } from './queries';
+import { productsQuery } from '../queries/productsQueries';
 import ProductsProvider from '../components/ProductsContext';
 
 export default function Home({ story, products }: any) {
