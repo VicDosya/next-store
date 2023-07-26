@@ -1,5 +1,19 @@
 import { gql } from "graphql-request";
 
+export const removeCartItemLine = gql`
+  mutation cartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
+    cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+      cart {
+        id
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`;
+
 export const getCartDetailsQuery = gql`
   query getCart($cartId: ID!) {
     cart(id: $cartId) {

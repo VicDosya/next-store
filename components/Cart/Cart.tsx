@@ -2,11 +2,24 @@ import React, { Fragment, useContext } from 'react'
 import { CartContext } from './CartContext'
 import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import potato from '../../public/potato.png';
+import { storefront } from '../../utils/shopify';
+import { removeCartItemLine } from './queries';
 
 function Cart() {
-  const { setIsOpen, isOpen, cartItems, setCartItems }: any = useContext(CartContext);
+  const { setIsOpen, isOpen, cartItems, setCartItems, cartId }: any = useContext(CartContext);
   console.log(cartItems);
+  const handleDeleteCartItem = async (itemLineId: any) => {
+    try {
+      const variables = {
+        cartId: cartId,
+        lineIds: [itemLineId]
+      }
+      const response = await storefront(removeCartItemLine, variables);
+      console.log("CART REMOVED", response);
+    } catch (error: any) {
+      console.log(error);
+    }
+  };
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setIsOpen}>
@@ -81,6 +94,7 @@ function Cart() {
                                       <button
                                         type="button"
                                         className="font-medium text-indigo-600 hover:text-indigo-500"
+                                        onClick={() => handleDeleteCartItem(item.node.id)}
                                       >
                                         Remove
                                       </button>
