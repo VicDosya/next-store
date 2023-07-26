@@ -9,12 +9,13 @@ import Description from "../components/StoryBlokComponents/Description";
 import ProductItemGrid from "../components/StoryBlokComponents/ProductItemGrid";
 import TwoGrid from "../components/StoryBlokComponents/TwoGrid";
 import Layout from "../components/Layout/Layout";
-import FourGridProducts from "../components/StoryBlokComponents/FourGridProducts";
+import ProductsGrid from "../components/StoryBlokComponents/ProductsGrid";
+import CartProvider from "../components/Cart/CartContext";
 
 const components = {
+  productsGrid: ProductsGrid,
   imageAndText: ImageAndText,
   productItemGrid: ProductItemGrid,
-  fourGridProducts: FourGridProducts,
   fourGrid: FourGrid,
   twoGrid: TwoGrid,
   title: Title,
@@ -29,11 +30,12 @@ storyblokInit({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
-
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <CartProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </CartProvider>
   )
 }
 
