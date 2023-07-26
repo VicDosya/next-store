@@ -1,10 +1,16 @@
 ## Screenshots:
 Main page working with Storyblok components:
+![image](https://github.com/VicDosya/next-store/assets/96661032/de11b7ec-42c2-44cb-a881-db18f0cdd630)
+Product details page:
+![image](https://github.com/VicDosya/next-store/assets/96661032/1d0bb354-713e-4740-8adc-2a2bac21ebf5)
+Cart details (Add or remove item + checkoutURL):
+![image](https://github.com/VicDosya/next-store/assets/96661032/c1dfd00c-dfef-4cbe-ad55-eb06d3bd2392)
 
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
 
 ## Getting Started
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
 
