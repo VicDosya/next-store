@@ -2,7 +2,7 @@ import { storyblokEditable } from "@storyblok/react";
 
 const ImageAndText = ({ blok }: any) => {
   return (
-    <div className="column feature" {...storyblokEditable(blok)}>
+    <div className="column feature" {...storyblokEditable(blok)} key={blok.uid}>
       <div className="relative flex justify-center">
         <img className="object-none w-full h-60" src={blok.image.filename} />
         <div className="absolute top-5">

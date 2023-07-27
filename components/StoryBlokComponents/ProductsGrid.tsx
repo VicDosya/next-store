@@ -3,7 +3,7 @@ import ProductList from "../ProductList/ProductList";
 
 const ProductsGrid = ({ blok }: any) => {
   return (
-    <div className="" {...storyblokEditable(blok)}>
+    <div className="" {...storyblokEditable(blok)} key={blok.uid}>
       <ProductList />
     </div>
   );

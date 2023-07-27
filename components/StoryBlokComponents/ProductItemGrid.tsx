@@ -4,7 +4,7 @@ import { storyblokEditable } from "@storyblok/react";
 
 function ProductItemGrid({ blok }: any) {
   return (
-    <div className=" shadow py-5 mx-5 bg-slate-100 hover:shadow-md" {...storyblokEditable(blok)}>
+    <div className=" shadow py-5 mx-5 bg-slate-100 hover:shadow-md" {...storyblokEditable(blok)} key={blok.uid}>
       <Link href={`products/INSERTHERE`}>
         <div className="flex items-center flex-col">
           <img className="w-32" src={blok.image.filename} />

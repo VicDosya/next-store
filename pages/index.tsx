@@ -1,8 +1,9 @@
 import React from 'react'
-import { useStoryblokState, StoryblokComponent, getStoryblokApi } from "@storyblok/react";
+import { StoryblokComponent, getStoryblokApi, useStoryblokState } from "@storyblok/react";
 import { storefront } from '../utils/shopify';
 import { productsQuery } from '../queries/productsQueries';
 import ProductsProvider from '../components/ProductsContext';
+import { getStoryblokContentVersion } from '../utils/helpers';
 
 export default function Home({ story, products }: any) {
 
@@ -21,15 +22,11 @@ export default function Home({ story, products }: any) {
 export async function getStaticProps() {
   try {
     const storyblokApi = getStoryblokApi();
-    //home is the default slug for the homepage in Storyblok
-    let slug = 'home';
 
-    //Load draft version
-    let sbParams: any = {
-      version: "draft" //Or 'published
-    };
     // Recieve storyblok data
-    let { data }: any = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+    let { data }: any = await storyblokApi.get("cdn/stories/home", {
+      version: getStoryblokContentVersion(),
+    });
     // Recieve shopify data
     const shopifyData: any = await storefront(productsQuery);
 

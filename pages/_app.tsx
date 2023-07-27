@@ -12,22 +12,27 @@ import Layout from "../components/Layout/Layout";
 import ProductsGrid from "../components/StoryBlokComponents/ProductsGrid";
 import CartProvider from "../components/Cart/CartContext";
 
-//Storyblok components ready to use:
-const components = {
-  productsGrid: ProductsGrid,
-  imageAndText: ImageAndText,
-  productItemGrid: ProductItemGrid,
-  fourGrid: FourGrid,
-  twoGrid: TwoGrid,
-  title: Title,
-  description: Description,
-  page: Page,
-};
+
 //Initialize connection with Storyblok(Visual Editor) and provide API client.
 storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_PREVIEW_ACCESS_TOKEN,
+  apiOptions: {
+    cache: {
+      type: "memory",
+      clear: "auto"
+    }
+  },
   use: [apiPlugin],
-  components,
+  components: {
+    productsGrid: ProductsGrid,
+    imageAndText: ImageAndText,
+    productItemGrid: ProductItemGrid,
+    fourGrid: FourGrid,
+    twoGrid: TwoGrid,
+    title: Title,
+    description: Description,
+    page: Page,
+  }
 });
 
 function MyApp({ Component, pageProps }: AppProps) {

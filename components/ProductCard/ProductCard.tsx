@@ -6,7 +6,7 @@ function ProductCard({ item }: any) {
   const product = item.node;
   return (
     <div className='cursor-pointer flex justify-center shadow py-5 my-5 mx-5 bg-slate-100 hover:shadow-md'>
-      <Link href={`products/${product.handle}`}>
+      <Link href={`/products/${product.handle}`}>
         <div className="">
           <Image
             src={product.images.edges[0].node.transformedSrc}
