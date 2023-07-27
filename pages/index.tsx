@@ -19,27 +19,32 @@ export default function Home({ story, products }: any) {
 }
 
 export async function getStaticProps() {
-  const storyblokApi = getStoryblokApi();
-  //home is the default slug for the homepage in Storyblok
-  let slug = 'home';
+  try {
+    const storyblokApi = getStoryblokApi();
+    //home is the default slug for the homepage in Storyblok
+    let slug = 'home';
 
-  //Load draft version
-  let sbParams: any = {
-    version: "draft" //Or 'published
-  };
-  // Recieve storyblok data
-  let { data }: any = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-  // Recieve shopify data
-  const shopifyData: any = await storefront(productsQuery);
+    //Load draft version
+    let sbParams: any = {
+      version: "draft" //Or 'published
+    };
+    // Recieve storyblok data
+    let { data }: any = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+    // Recieve shopify data
+    const shopifyData: any = await storefront(productsQuery);
 
-  return {
-    props: {
-      //Storyblok
-      story: data ? data.story : false,
-      key: data ? data.story.id : false,
-      //Shopify
-      products: shopifyData.data,
-    },
-    revalidate: 3600,
+    return {
+      props: {
+        //Storyblok
+        story: data ? data.story : false,
+        key: data ? data.story.id : false,
+        //Shopify
+        products: shopifyData.data,
+      },
+      revalidate: 3600,
+    }
+  } catch (error: any) {
+    console.log("index.tsx getStaticProps Error:", error);
   }
+
 }
