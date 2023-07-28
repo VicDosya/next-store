@@ -18,7 +18,7 @@ import LovedBy from "../components/StoryBlokComponents/LovedBy";
 
 //Initialize connection with Storyblok(Visual Editor) and provide API client.
 storyblokInit({
-  accessToken: process.env.NEXT_PUBLIC_STORYBLOK_PREVIEW_ACCESS_TOKEN,
+  accessToken: process.env.NEXT_PUBLIC_STORYBLOK_ACCESS_TOKEN,
   apiOptions: {
     cache: {
       type: "memory",
