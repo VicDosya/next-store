@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { StoryblokComponent, getStoryblokApi, useStoryblokState } from "@storyblok/react";
 import { storefront } from '../utils/shopify';
 import { productsQuery } from '../queries/productsQueries';
@@ -6,10 +6,6 @@ import ProductsProvider from '../components/ProductsContext';
 import { getStoryblokContentVersion } from '../utils/helpers';
 
 export default function Home({ story, products }: any) {
-  const [storyblokVersion, setStoryblokVersion] = useState(getStoryblokContentVersion());
-
-  console.log(storyblokVersion);
-
   //Enable the Visual Editor
   story = useStoryblokState(story);
 
