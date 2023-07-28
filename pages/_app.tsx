@@ -11,6 +11,9 @@ import TwoGrid from "../components/StoryBlokComponents/TwoGrid";
 import Layout from "../components/Layout/Layout";
 import ProductsGrid from "../components/StoryBlokComponents/ProductsGrid";
 import CartProvider from "../components/Cart/CartContext";
+import Navigation from "../components/Navigation/Navigation";
+import TopMessageBar from "../components/StoryBlokComponents/TopMessageBar";
+import LovedBy from "../components/StoryBlokComponents/LovedBy";
 
 
 //Initialize connection with Storyblok(Visual Editor) and provide API client.
@@ -24,6 +27,9 @@ storyblokInit({
   },
   use: [apiPlugin],
   components: {
+    topMessageBar: TopMessageBar,
+    navigation: Navigation,
+    lovedBy: LovedBy,
     productsGrid: ProductsGrid,
     imageAndText: ImageAndText,
     productItemGrid: ProductItemGrid,

@@ -1,7 +1,7 @@
 import { storyblokEditable } from "@storyblok/react";
 
 const Title = ({ blok }: any) => {
-  return <h2 className="font-bold text-2xl my-2" {...storyblokEditable(blok)} key={blok.uid}>{blok.headline}</h2>;
+  return <h2 className=" mx-40 text-4xl font-serif text-fuchsia-900" {...storyblokEditable(blok)} key={blok.uid}>{blok.headline}</h2>;
 };
 
 export default Title;

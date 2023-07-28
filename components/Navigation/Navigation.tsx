@@ -1,34 +1,47 @@
 import { useContext } from "react";
-import Link from "next/link";
+import Image from "next/image";
+import { storyblokEditable } from "@storyblok/react";
+import { IoMdCart } from 'react-icons/io';
+import { BsFillPersonFill } from 'react-icons/bs';
+import { RiArrowDropDownLine } from 'react-icons/ri'
 import { CartContext } from "../Cart/CartContext";
-const Navigation = () => {
+const Navigation = ({ blok }: any) => {
   const { isOpen, setIsOpen, cartLength }: any = useContext(CartContext);
-
   return (
-    <div className="relative bg-white border-b-2 border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex justify-between items-center  py-6 md:justify-start md:space-x-10">
-          <div className="flex justify-start lg:w-0 lg:flex-1">
-            <Link href="/">
-              <span className="sr-only">Logo</span>
-              <img
-                className="h-20 w-auto sm:h-16 hidden sm:block"
-                src='https://www.kadencewp.com/wp-content/uploads/2020/10/alogo-1.png'
-                alt="logo"
-              />
-              <img
-                className="h-20 w-auto sm:h-16 sm:hidden"
-                src='https://www.kadencewp.com/wp-content/uploads/2020/10/alogo-1.png'
-                alt="logo"
-              />
+    <div className="flex items-center justify-around h-20 bg-white border-b-2 border-gray-100" {...storyblokEditable(blok)} key={blok.uid}>
+      <div className="flex w-full justify-center gap-3">
+        {/* 3 left buttons */}
+        <div className="hidden lg:inline">
+          <button className="tracking-wide bg-fuchsia-900 hover:bg-fuchsia-950 text-white font-bold py-2 px-4 rounded-full">Get started</button>
+        </div>
+        <div className="hidden md:inline">
+          <button className="flex items-center text-fuchsia-900 hover:bg-gray-200 border font-bold py-2 pl-4 pr-2 rounded-full">
+            Shop
+            <RiArrowDropDownLine size={25} />
+          </button>
+        </div>
+        <div className="hidden lg:inline">
+          <button className="flex items-center text-fuchsia-900 hover:bg-gray-200 font-bold py-2 px-4 rounded-full">
+            About
+          </button>
+        </div>
+      </div>
+      <div className="flex w-full justify-center">
+        {/* Logo */}
+        <Image src={blok.logoImg.filename} alt={blok.imgAltText} width={185} height={185} />
+      </div>
+      <div className="flex w-full justify-center gap-5">
+        {/* Avatar */}
+        <div className="cursor-pointer bg-fuchsia-300 w-8 h-8 rounded-full flex justify-center items-center hover:bg-fuchsia-400 hidden md:flex">
+          <BsFillPersonFill className="text-fuchsia-900 hover:text-fuchsia-950" size={22} />
+          <span className="sr-only">Notifications</span>
+        </div>
 
-            </Link>
-          </div>
-          <div className="hidden cursor-pointer md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
-            <p className="text-base font-medium text-gray-500 hover:text-gray-900" onClick={() => setIsOpen(!isOpen)}>
-              My Cart ({cartLength ? cartLength : '0'}) 🛒
-            </p>
-          </div>
+        {/* Cart */}
+        <div className="cursor-pointer relative bg-fuchsia-300 w-8 h-8 rounded-full flex justify-center items-center hover:bg-fuchsia-400" onClick={() => setIsOpen(!isOpen)}>
+          <IoMdCart className="text-fuchsia-900 hover:text-fuchsia-950" size={22} />
+          {cartLength !== 0 ? <div className="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-fuchsia-900 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">{cartLength ? cartLength : '0'}</div> : ''}
+
         </div>
       </div>
     </div>

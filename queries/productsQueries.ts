@@ -7,6 +7,7 @@ export const productsQuery = gql`
         node {
           id
           title
+          description
           handle
           tags
           priceRange {

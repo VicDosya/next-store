@@ -1,7 +1,7 @@
 import { storyblokEditable } from "@storyblok/react";
 
 const Description = ({ blok }: any) => {
-  return <p className="text-xl mb-5" {...storyblokEditable(blok)} key={blok.uid}>{blok.description}</p>;
+  return <p className="mx-40 text-xl mt-2 mb-2 text-fuchsia-900 leading-none" {...storyblokEditable(blok)} key={blok.uid}>{blok.description}</p>;
 };
 
 export default Description;

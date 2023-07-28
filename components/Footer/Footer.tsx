@@ -2,11 +2,12 @@ import Link from "next/link"
 
 const Footer = () => (
   <footer className="bg-white lg:mt-10 lg:bottom-0 block w-full" aria-labelledby="footer-heading">
+    <div className="border"></div>
     <h2 id="footer-heading" className="sr-only">Footer</h2>
     <div className="py-12 mx-auto max-w-7xl lg:py-16 px-12 lg:px-20">
       <div className="grid md:grid-cols-4 md:gap-8 grid-cols-2">
         <div className="mt-12 md:mt-0">
-          <h3 className="text-xs font-semibold tracking-wider text-blue-600 uppercase">Support</h3>
+          <h3 className="text-xs font-semibold tracking-wider text-fuchsia-900 uppercase">Support</h3>
           <ul role="list" className="mt-4 space-y-4">
             <li>
               <Link href="#" className="text-sm font-normal text-gray-500 hover:text-gray-900"> Pricing </Link>
@@ -23,7 +24,7 @@ const Footer = () => (
           </ul>
         </div>
         <div className="mt-12 md:mt-0">
-          <h3 className="text-xs font-semibold tracking-wider text-blue-600 uppercase">Support</h3>
+          <h3 className="text-xs font-semibold tracking-wider text-fuchsia-900 uppercase">Support</h3>
           <ul role="list" className="mt-4 space-y-4">
             <li>
               <Link href="#" className="text-sm font-normal text-gray-500 hover:text-gray-900"> Pricing </Link>
@@ -40,7 +41,7 @@ const Footer = () => (
           </ul>
         </div>
         <div className="mt-12 md:mt-0">
-          <h3 className="text-xs font-semibold tracking-wider text-blue-600 uppercase">Support</h3>
+          <h3 className="text-xs font-semibold tracking-wider text-fuchsia-900 uppercase">Support</h3>
           <ul role="list" className="mt-4 space-y-4">
             <li>
               <Link href="#" className="text-sm font-normal text-gray-500 hover:text-gray-900"> Pricing </Link>
@@ -57,7 +58,7 @@ const Footer = () => (
           </ul>
         </div>
         <div className="mt-12 md:mt-0">
-          <h3 className="text-xs font-semibold tracking-wider text-blue-600 uppercase">Support</h3>
+          <h3 className="text-xs font-semibold tracking-wider text-fuchsia-900 uppercase">Support</h3>
           <ul role="list" className="mt-4 space-y-4">
             <li>
               <Link href="#" className="text-sm font-normal text-gray-500 hover:text-gray-900"> Pricing </Link>
@@ -110,8 +111,8 @@ const Footer = () => (
       </div>
       <div className="mt-8 md:mt-0 md:order-1">
         <span className="mt-2 text-sm font-light text-gray-500">
-          Copyright © 2017-2022
-          <Link href="#" className="mx-2 text-wickedblue hover:text-gray-500" rel="noopener noreferrer">Storyblok GmbH</Link>.
+          Copyright © 2023
+          <Link href="#" className="mx-2 text-wickedblue hover:text-gray-500" rel="noopener noreferrer">Easymeal</Link>.
         </span>
       </div>
     </div>
