@@ -25,6 +25,7 @@ export async function getStaticProps() {
     // Recieve storyblok data
     let { data }: any = await storyblokApi.get("cdn/stories/home", {
       version: getStoryblokContentVersion(),
+      cv: +new Date(),
     });
     // Recieve shopify data
     const shopifyData: any = await storefront(productsQuery);
