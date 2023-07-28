@@ -7,21 +7,20 @@ import { RiArrowDropDownLine } from 'react-icons/ri'
 import { CartContext } from "../Cart/CartContext";
 const Navigation = ({ blok }: any) => {
   const { isOpen, setIsOpen, cartLength }: any = useContext(CartContext);
-  console.log(blok);
   return (
     <div className="flex items-center justify-around h-20 bg-white border-b-2 border-gray-100" {...storyblokEditable(blok)} key={blok.uid}>
       <div className="flex w-full justify-center gap-3">
         {/* 3 left buttons */}
-        <div>
+        <div className="hidden lg:inline">
           <button className="tracking-wide bg-fuchsia-900 hover:bg-fuchsia-950 text-white font-bold py-2 px-4 rounded-full">Get started</button>
         </div>
-        <div>
+        <div className="hidden md:inline">
           <button className="flex items-center text-fuchsia-900 hover:bg-gray-200 border font-bold py-2 pl-4 pr-2 rounded-full">
             Shop
             <RiArrowDropDownLine size={25} />
           </button>
         </div>
-        <div>
+        <div className="hidden lg:inline">
           <button className="flex items-center text-fuchsia-900 hover:bg-gray-200 font-bold py-2 px-4 rounded-full">
             About
           </button>
@@ -33,7 +32,7 @@ const Navigation = ({ blok }: any) => {
       </div>
       <div className="flex w-full justify-center gap-5">
         {/* Avatar */}
-        <div className="cursor-pointer bg-fuchsia-300 w-8 h-8 rounded-full flex justify-center items-center hover:bg-fuchsia-400">
+        <div className="cursor-pointer bg-fuchsia-300 w-8 h-8 rounded-full flex justify-center items-center hover:bg-fuchsia-400 hidden md:flex">
           <BsFillPersonFill className="text-fuchsia-900 hover:text-fuchsia-950" size={22} />
           <span className="sr-only">Notifications</span>
         </div>
