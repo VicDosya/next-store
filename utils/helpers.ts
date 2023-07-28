@@ -1,5 +1,5 @@
 export const getStoryblokContentVersion = () => {
-  if (process.env.NEXT_PUBLIC_STORYBLOK_PREVIEW_MODE === "true") {
+  if (process.env.NODE_ENV === "development") {
     return "draft";
   }
   return "published";
