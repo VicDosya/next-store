@@ -7,7 +7,7 @@ const ImageAndText = ({ blok }: any) => {
     <div className="flex justify-center items-center" {...storyblokEditable(blok)} key={blok.uid}>
       <img className="animate-fade animate-once animate-ease-in-out animate-duration-1000 h-64 object-cover lg:h-full w-full" src={blok.image.filename} />
       <div className="absolute">
-        <div className="absolute top-36 right-10 animate-fade animate-once animate-ease-in-out animate-delay-[2200ms]">
+        <div className="hidden xl:inline absolute top-36 right-10 animate-fade animate-once animate-ease-in-out animate-delay-[2200ms]">
           <Image src={worthIt} width={160} height={160} alt="worth it image" />
         </div>
         <div className="flex flex-col items-center">
