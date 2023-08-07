@@ -49,6 +49,10 @@ function Checkout() {
             </div>
           )
         }) : ""}
+        <div className='flex flex-col items-center'>
+          <h1>Total amount:</h1>
+          <h2>{cartItems.cost.totalAmount.amount}</h2>
+        </div>
         {clientSecret && (
           <Elements options={options} stripe={stripePromise}>
             <PaymentForm />
