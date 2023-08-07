@@ -9,6 +9,7 @@ function PaymentForm() {
   const elements: any = useElements();
 
   const [message, setMessage] = useState<any>(null);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -46,11 +47,12 @@ function PaymentForm() {
 
   const handleSubmit = async (e: any) => {
     setMessage(null);
-    e.preventDefault();
 
     if (!stripe || !elements) {
-      //TODO: Make button submission disabled
+      setButtonDisabled(true);
       return;
+    } else {
+      setButtonDisabled(false);
     }
     setIsLoading(true);
 
@@ -78,7 +80,7 @@ function PaymentForm() {
         )}
         <PaymentElement options={paymentElementOptions} className=' m-auto w-96' />
         <div className='flex justify-center'>
-          <button onClick={handleSubmit} className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Submit</button>
+          <button disabled={buttonDisabled} onClick={handleSubmit} className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Submit</button>
         </div>
       </div>
     </>
