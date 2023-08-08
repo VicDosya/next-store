@@ -59,7 +59,7 @@ function ProductDetails({ product, relatedProducts }: any) {
           <div className='font-bold text-xl mt-5'>${product.priceRange.minVariantPrice.amount}</div>
           <div className='font-bold text-lg text-gray-700 mt-5'>{product.description}</div>
           <div className='flex justify-center my-5'>
-            <p className='mx-5'>Colors:</p>
+            <p className='mx-5'>Meal size:</p>
             <div>
               {product.variants.edges.map((variant: any) => (
                 <div key={variant.node.id}>
