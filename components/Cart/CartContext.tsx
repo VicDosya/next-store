@@ -15,7 +15,6 @@ function CartProvider({ children }: any) {
   });
   const [cartItems, setCartItems] = useState([]);
   const [cartLength, setCartLength] = useState(0);
-  console.log(cartItems);
 
   useEffect(() => {
     if (cartId) {

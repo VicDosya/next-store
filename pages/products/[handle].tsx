@@ -13,7 +13,9 @@ export default function Product({ product, products }: any) {
 export async function getStaticPaths() {
   const { data } = await storefront(singleProductHandleQuery);
   return {
-    paths: data.products.edges.map((product: any) => ({ params: { handle: product.node.handle } })),
+    paths: data.products.edges.map((product: any) => ({
+      params: { handle: product.node.handle }
+    })),
     fallback: false,
   }
 }
