@@ -1,7 +1,7 @@
 import Stripe from "stripe";
 
 // Stripe initialization
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   typescript: true,
   apiVersion: "2022-11-15",
 });
