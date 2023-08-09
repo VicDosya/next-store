@@ -32,9 +32,16 @@ export default async function handler(req: any, res: any) {
   //Handle the event
   if (event) {
     switch (event.type) {
+      case "payment_intent.created":
+        console.log("Payment intent created!", event.data.object);
+        break;
       case "payment_intent.succeeded":
         console.log("Payment intent succeeded!", event.data.object);
         break;
+      case "charge.succeeded":
+        console.log("Charge succeeded!", event.data.object);
+        break;
+
       default:
         console.log("Unhandled event type.", event.type);
     }
