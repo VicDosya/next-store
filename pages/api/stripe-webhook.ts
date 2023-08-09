@@ -1,6 +1,13 @@
 import { buffer } from "stream/consumers";
 import { stripe } from "./create-payment-intent"; //Stripe instance
 
+//Important! without this config, the data will be automatically parsed. (We need RAW data in the request)
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {
     res.status(405).end();
@@ -8,10 +15,12 @@ export default async function handler(req: any, res: any) {
   }
   let event: any;
 
+  //Using buffer to make the req data raw
+  const rawBody = await buffer(req);
+
   try {
-    const rawBody = await buffer(req);
     event = stripe.webhooks.constructEvent(
-      rawBody.toString(),
+      rawBody,
       req.headers["stripe-signature"],
       process.env.STRIPE_WEBHOOK_SECRET!
     );
