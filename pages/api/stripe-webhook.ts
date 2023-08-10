@@ -39,7 +39,7 @@ export default async function handler(req: any, res: any) {
         break;
       case "payment_intent.succeeded":
         console.log("Payment intent succeeded!", event.data.object);
-        let draftOrderId;
+        let draftOrderId = null;
         // CREATE DRAFT ORDER
         try {
           const createOrderVariables = {
@@ -61,22 +61,23 @@ export default async function handler(req: any, res: any) {
           );
           // Apply the order id to a variable
           draftOrderId = shopifyOrder.data.draftOrderCreate.draftOrder.id;
+
+          // COMPLETE DRAFT ORDER
+          try {
+            const completeOrderVariables = {
+              id: draftOrderId,
+            };
+            const shopifyCompleteOrder = await shopifyAdmin(
+              completeDraftOrderQuery,
+              completeOrderVariables
+            );
+            console.log("Shopify draft order completed", shopifyCompleteOrder);
+            draftOrderId = null;
+          } catch (error: any) {
+            console.log("Error completing draft order:", error);
+          }
         } catch (error: any) {
           console.log("Error creating shopify draft order:", error);
-        }
-
-        // COMPLETE DRAFT ORDER
-        try {
-          const completeOrderVariables = {
-            id: draftOrderId,
-          };
-          const shopifyCompleteOrder = await shopifyAdmin(
-            completeDraftOrderQuery,
-            completeOrderVariables
-          );
-          console.log("Shopify draft order completed", shopifyCompleteOrder);
-        } catch (error: any) {
-          console.log("Error completing draft order:", error);
         }
 
         break;
