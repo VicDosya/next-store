@@ -1,5 +1,7 @@
 import { buffer } from "stream/consumers";
 import { stripe } from "./create-payment-intent"; //Stripe instance
+import { gql } from "graphql-request";
+import { shopifyAdmin } from "../../utils/shopify";
 
 //Important! without this config, the data will be automatically parsed. (We need RAW data in the request)
 export const config = {
@@ -37,6 +39,46 @@ export default async function handler(req: any, res: any) {
         break;
       case "payment_intent.succeeded":
         console.log("Payment intent succeeded!", event.data.object);
+        let draftOrderId;
+        // CREATE DRAFT ORDER
+        try {
+          const createOrderVariables = {
+            input: {
+              lineItems: {
+                variantId: "gid://shopify/ProductVariant/44037568856317",
+                quantity: 2,
+              },
+            },
+          };
+
+          const shopifyOrder = await shopifyAdmin(
+            createDraftOrderQuery,
+            createOrderVariables
+          );
+          console.log(
+            "Shopify order created:",
+            shopifyOrder.data.draftOrderCreate.draftOrder.id
+          );
+          // Apply the order id to a variable
+          draftOrderId = shopifyOrder.data.draftOrderCreate.draftOrder.id;
+        } catch (error: any) {
+          console.log("Error creating shopify draft order:", error);
+        }
+
+        // COMPLETE DRAFT ORDER
+        try {
+          const completeOrderVariables = {
+            id: draftOrderId,
+          };
+          const shopifyCompleteOrder = await shopifyAdmin(
+            completeDraftOrderQuery,
+            completeOrderVariables
+          );
+          console.log("Shopify draft order completed", shopifyCompleteOrder);
+        } catch (error: any) {
+          console.log("Error completing draft order:", error);
+        }
+
         break;
       case "charge.succeeded":
         console.log("Charge succeeded!", event.data.object);
@@ -48,3 +90,23 @@ export default async function handler(req: any, res: any) {
     res.status(200).end();
   }
 }
+
+const createDraftOrderQuery = gql`
+  mutation draftOrderCreate($input: DraftOrderInput!) {
+    draftOrderCreate(input: $input) {
+      draftOrder {
+        id
+      }
+    }
+  }
+`;
+
+const completeDraftOrderQuery = gql`
+  mutation draftOrderComplete($id: ID!) {
+    draftOrderComplete(id: $id) {
+      draftOrder {
+        id
+      }
+    }
+  }
+`;
